@@ -1,5 +1,8 @@
 from flask import Flask, render_template
 
+from services.user_services import UserServices
+
+
 
 app = Flask(__name__)
 
@@ -7,7 +10,9 @@ app = Flask(__name__)
 # http://www.domena.hr/
 @app.route('/')
 def index():
-    return render_template('index.html')
+    user = UserServices().get_user()
+    
+    return render_template('index.html', user=user)
 
 
 # http://www.domena.hr/about
@@ -21,6 +26,3 @@ def about():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-# smart-key-flask
