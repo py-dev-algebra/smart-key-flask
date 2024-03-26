@@ -13,4 +13,4 @@ class User:
             is_active = 'Aktivan'
         else:
             is_active = 'Deaktiviran'
-        return f'Ime: {self.first_name}\nPrezime: {self.last_name}\nPIN: {self.pin_code}\nStatus: {is_active}'
+        return f'{self.first_name};{self.last_name};{self.pin_code};{is_active}'

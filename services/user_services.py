@@ -1,11 +1,12 @@
 from models.users import User
+from repositories.file_repository import FileRepo
 
 
 class UserServices:
 
     @classmethod
-    def create_user(cls):
-        pass
+    def create_user(cls, user: User):
+        return FileRepo.save_to_file(str(user))
 
     @classmethod
     def get_user(cls) -> User:

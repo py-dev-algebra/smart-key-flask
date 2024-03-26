@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block page_content %}
+
+<div class="row">
+    <div class="col-md-8">
+        <form>
+            <div class="mb-3">
+                <label for="exampleInputFirstName" class="form-label">Ime korisnika</label>
+                <input type="text" class="form-control" aria-describedby="firstNameHelp">
+                <div id="firstNameHelp" class="form-text">Upisite ime korisnika</div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputLastName" class="form-label">Prezime korisnika</label>
+                <input type="text" class="form-control" aria-describedby="lastNameHelp">
+                <div id="lastNameHelp" class="form-text">Upisite prezime korisnika</div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPIN" class="form-label">PIN korisnika</label>
+                <input type="text" class="form-control" aria-describedby="pinNameHelp">
+                <div id="pinNameHelp" class="form-text">Upisite PIN korisnika</div>
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleIsActive">
+                <label class="form-check-label" for="exampleIsActive">Aktivan?</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Kreiraj</button>
+        </form>
+    </div>
+    <div class="col-md-4">
+        <h6>Pomoc kod popunjavanja forme</h6>
+        <p>Lorem, ipsum dolor sit ...</p>
+    </div>
+</div>
+
+
+{% endblock page_content %}

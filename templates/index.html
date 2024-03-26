@@ -1,17 +1,24 @@
 {% extends 'base.html' %}
 
 {% block page_content %}
-<h1>Hello, world from NEW INDEX!</h1>
 
-<ul class="list-group">
-    <li class="list-group-item">IME: {{ user.first_name }}</li>
-    <li class="list-group-item">PREZIME: {{ user.last_name }}</li>
-    <li class="list-group-item">PIN: {{ user.pin_code }}</li>
+<div class="row">
+    <div class="col-md-8">
+        <ul class="list-group">
+            <li class="list-group-item">IME: {{ user.first_name }}</li>
+            <li class="list-group-item">PREZIME: {{ user.last_name }}</li>
+            <li class="list-group-item">PIN: {{ user.pin_code }}</li>
+            
+            {% if user.is_active %}
+            <li class="list-group-item">STATUS: Aktivan</li>
+            {% else %}
+            <li class="list-group-item">STATUS: Deaktiviran</li>
+            {% endif %}
+        </ul>
+    </div>
+    <div class="col-md-4">
+        <h1>Pomocni tekst</h1>
+    </div>
+</div>
 
-    {% if user.is_active %}
-        <li class="list-group-item">STATUS: Aktivan</li>
-    {% else %}
-        <li class="list-group-item">STATUS: Deaktiviran</li>
-    {% endif %}
-</ul>
 {% endblock page_content %}
