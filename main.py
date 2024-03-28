@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, url_for, request
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, BooleanField
 from wtforms.validators import DataRequired, Length
+from datetime import datetime as dt
 
 from services.user_services import UserServices
 from models.users import User
@@ -25,8 +26,9 @@ class UserCreateForm(FlaskForm):
 @app.route('/')
 def index():
     users = UserServices().get_users()
+    current_date = dt.now().strftime('%d.%m.%Y. %H:%M:%S')
     
-    return render_template('index.html', users=users)
+    return render_template('index.html', users=users, time=current_date)
 
 
 # http://www.domena.hr/about
@@ -53,16 +55,17 @@ def create_user():
 
 
 
-# http://www.domena.hr/edit-user
-@app.route('/edit-user', methods=['GET', 'POST'])
-def edit_user():
+# http://www.domena.hr/edit-user/2
+@app.route('/edit-user/<id>', methods=['GET', 'POST'])
+def edit_user(id):
     user_form = UserCreateForm()
 
     if request.method == 'GET':
-        user_form.first_name.data = 'Pero'
-        user_form.last_name.data = 'Peric'
-        user_form.pin_code.data = '1234'
-        user_form.is_active.data = True
+        user = UserServices.get_user(id)
+        user_form.first_name.data = user.first_name
+        user_form.last_name.data = user.last_name
+        user_form.pin_code.data = user.pin_code
+        user_form.is_active.data = user.is_active
 
     if user_form.is_submitted():
         user_first_name = user_form.first_name.data
