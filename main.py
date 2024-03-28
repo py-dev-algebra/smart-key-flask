@@ -14,7 +14,7 @@ class UserCreateForm(FlaskForm):
     last_name = StringField('Prezime')
     pin_code = StringField('PIN')
     is_active = BooleanField('Aktivan?')
-    submit = SubmitField()
+    submit = SubmitField('Kreiraj')
 
 
 
@@ -33,9 +33,12 @@ def about():
 
 
 # http://www.domena.hr/create-user
-@app.route('/create-user')
+@app.route('/create-user', methods=['GET', 'POST'])
 def create_user():
     user_form = UserCreateForm()
+    user_form.valid_on_submit()
+
+
     return render_template('create-user.html', form=user_form)
 
 
