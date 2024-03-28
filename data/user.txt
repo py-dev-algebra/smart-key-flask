@@ -1,0 +1,4 @@
+Pero;Peric;1234;Aktivan
+Iva;Ivic;9876;Deaktiviran
+Pero;Peric;1234;Aktivan
+Peroslav;Peric;1234;Deaktiviran
